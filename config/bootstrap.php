@@ -217,4 +217,8 @@ if (Configure::read('debug')) {
 
 Plugin::load('Crud');
 
-Plugin::load('Crud');
+Plugin::load('CrudView');
+
+Plugin::load('BootstrapUI');
+
+Plugin::load('Search');

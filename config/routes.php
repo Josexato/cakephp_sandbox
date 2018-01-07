@@ -76,6 +76,16 @@ Router::scope('/', function (RouteBuilder $routes) {
 });
 
 /**
+ * Create an api prefix to test CRUD plugin
+ * how to customize the loading of plugin routes.
+ */
+Router::prefix('api', function ($routes) {
+    $routes->extensions(['json', 'xml']);
+    $routes->resources('Users');
+    $routes->resources('Books');
+});
+
+/**
  * Load all plugin routes. See the Plugin documentation on
  * how to customize the loading of plugin routes.
  */
