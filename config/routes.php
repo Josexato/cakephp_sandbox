@@ -85,9 +85,8 @@ Router::prefix('api', function ($routes) {
     $routes->resources('Books');
 });
 
-Router::prefix('adm', function ($routes) {
-    $routes->resources('Books');
-    $routes->resources('Users');
+Router::prefix('adm', function (RouteBuilder $routes) {
+    $routes->fallbacks();
 });
 
 /**
