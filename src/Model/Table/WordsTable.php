@@ -56,9 +56,9 @@ class WordsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('word')
-            ->maxLength('word', 200)
-            ->allowEmpty('word');
+            ->scalar('name')
+            ->maxLength('name', 200)
+            ->allowEmpty('name');
 
         return $validator;
     }

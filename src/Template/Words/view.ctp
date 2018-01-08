@@ -23,8 +23,8 @@
             <td><?= h($word->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Word') ?></th>
-            <td><?= h($word->word) ?></td>
+            <th scope="row"><?= __('Name') ?></th>
+            <td><?= h($word->name) ?></td>
         </tr>
     </table>
     <div class="related">

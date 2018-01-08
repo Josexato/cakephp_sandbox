@@ -7,7 +7,7 @@ use Cake\ORM\Entity;
  * Word Entity
  *
  * @property string $id
- * @property string $word
+ * @property string $name
  *
  * @property \App\Model\Entity\Book[] $books
  */
@@ -24,7 +24,7 @@ class Word extends Entity
      * @var array
      */
     protected $_accessible = [
-        'word' => true,
+        'name' => true,
         'books' => true
     ];
 }

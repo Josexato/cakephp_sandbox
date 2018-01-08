@@ -28,8 +28,8 @@ class AppController extends \Cake\Controller\Controller
                 'Crud.RelatedModels',
                 // If you need searching. Generally it's better to load these
                 // only in the controller for which you need searching.
-                //'Crud.Search',
-                //'CrudView.ViewSearch',
+                // 'Crud.Search',
+                // 'CrudView.ViewSearch',
             ]
         ]);
     }

@@ -17,7 +17,7 @@
     <fieldset>
         <legend><?= __('Add Word') ?></legend>
         <?php
-            echo $this->Form->control('word');
+            echo $this->Form->control('name');
             echo $this->Form->control('books._ids', ['options' => $books]);
         ?>
     </fieldset>

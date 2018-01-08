@@ -18,7 +18,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('word') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -26,7 +26,7 @@
             <?php foreach ($words as $word): ?>
             <tr>
                 <td><?= h($word->id) ?></td>
-                <td><?= h($word->word) ?></td>
+                <td><?= h($word->name) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $word->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $word->id]) ?>

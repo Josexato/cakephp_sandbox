@@ -11,4 +11,10 @@ use App\Controller\Adm\AppController;
 
 class BooksController extends AppController
 {
+    public function index()
+    {
+        $action = $this->Crud->action(); // Gets the IndexAction object
+        debug($action->config()); // Show all configuration related to this action
+        return $this->Crud->execute();
+    }
 }
