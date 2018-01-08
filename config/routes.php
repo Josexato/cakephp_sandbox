@@ -85,6 +85,11 @@ Router::prefix('api', function ($routes) {
     $routes->resources('Books');
 });
 
+Router::prefix('adm', function ($routes) {
+    $routes->resources('Books');
+    $routes->resources('Users');
+});
+
 /**
  * Load all plugin routes. See the Plugin documentation on
  * how to customize the loading of plugin routes.

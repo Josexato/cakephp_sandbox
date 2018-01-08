@@ -222,3 +222,5 @@ Plugin::load('CrudView');
 Plugin::load('BootstrapUI');
 
 Plugin::load('Search');
+
+Plugin::load('Migrations');
