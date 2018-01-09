@@ -33,7 +33,7 @@ class WordsTable extends Table
         parent::initialize($config);
 
         $this->setTable('words');
-        $this->setDisplayField('id');
+        $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
         $this->belongsToMany('Books', [
