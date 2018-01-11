@@ -18,8 +18,7 @@ class BooksControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.books',
         'app.users',
-        'app.words',
-        'app.books_words'
+        'app.weightings'
     ];
 
     /**

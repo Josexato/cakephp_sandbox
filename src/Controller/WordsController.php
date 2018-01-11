@@ -35,7 +35,7 @@ class WordsController extends AppController
     public function view($id = null)
     {
         $word = $this->Words->get($id, [
-            'contain' => ['Books']
+            'contain' => ['Weightings']
         ]);
 
         $this->set('word', $word);
@@ -58,8 +58,7 @@ class WordsController extends AppController
             }
             $this->Flash->error(__('The word could not be saved. Please, try again.'));
         }
-        $books = $this->Words->Books->find('list', ['limit' => 200]);
-        $this->set(compact('word', 'books'));
+        $this->set(compact('word'));
     }
 
     /**
@@ -72,7 +71,7 @@ class WordsController extends AppController
     public function edit($id = null)
     {
         $word = $this->Words->get($id, [
-            'contain' => ['Books']
+            'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $word = $this->Words->patchEntity($word, $this->request->getData());
@@ -83,8 +82,7 @@ class WordsController extends AppController
             }
             $this->Flash->error(__('The word could not be saved. Please, try again.'));
         }
-        $books = $this->Words->Books->find('list', ['limit' => 200]);
-        $this->set(compact('word', 'books'));
+        $this->set(compact('word'));
     }
 
     /**

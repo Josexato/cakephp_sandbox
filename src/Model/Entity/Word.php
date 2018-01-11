@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property string $id
  * @property string $name
  *
- * @property \App\Model\Entity\Book[] $books
+ * @property \App\Model\Entity\Weighting[] $weightings
  */
 class Word extends Entity
 {
@@ -25,6 +25,6 @@ class Word extends Entity
      */
     protected $_accessible = [
         'name' => true,
-        'books' => true
+        'weightings' => true
     ];
 }

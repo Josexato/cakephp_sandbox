@@ -38,7 +38,7 @@ class BooksController extends AppController
     public function view($id = null)
     {
         $book = $this->Books->get($id, [
-            'contain' => ['Users', 'Words']
+            'contain' => ['Users', 'Weightings']
         ]);
 
         $this->set('book', $book);
@@ -62,8 +62,7 @@ class BooksController extends AppController
             $this->Flash->error(__('The book could not be saved. Please, try again.'));
         }
         $users = $this->Books->Users->find('list', ['limit' => 200]);
-        $words = $this->Books->Words->find('list', ['limit' => 200]);
-        $this->set(compact('book', 'users', 'words'));
+        $this->set(compact('book', 'users'));
     }
 
     /**
@@ -76,7 +75,7 @@ class BooksController extends AppController
     public function edit($id = null)
     {
         $book = $this->Books->get($id, [
-            'contain' => ['Words']
+            'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $book = $this->Books->patchEntity($book, $this->request->getData());
@@ -88,8 +87,7 @@ class BooksController extends AppController
             $this->Flash->error(__('The book could not be saved. Please, try again.'));
         }
         $users = $this->Books->Users->find('list', ['limit' => 200]);
-        $words = $this->Books->Words->find('list', ['limit' => 200]);
-        $this->set(compact('book', 'users', 'words'));
+        $this->set(compact('book', 'users'));
     }
 
     /**

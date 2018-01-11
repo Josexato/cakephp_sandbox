@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
  * Books Model
  *
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\WordsTable|\Cake\ORM\Association\BelongsToMany $Words
+ * @property \App\Model\Table\WeightingsTable|\Cake\ORM\Association\HasMany $Weightings
  *
  * @method \App\Model\Entity\Book get($primaryKey, $options = [])
  * @method \App\Model\Entity\Book newEntity($data = null, array $options = [])
@@ -41,10 +41,8 @@ class BooksTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsToMany('Words', [
-            'foreignKey' => 'book_id',
-            'targetForeignKey' => 'word_id',
-            'joinTable' => 'books_words'
+        $this->hasMany('Weightings', [
+            'foreignKey' => 'book_id'
         ]);
     }
 
@@ -63,7 +61,8 @@ class BooksTable extends Table
         $validator
             ->scalar('name')
             ->maxLength('name', 1000)
-            ->allowEmpty('name');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         return $validator;
     }

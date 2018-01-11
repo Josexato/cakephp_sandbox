@@ -11,7 +11,7 @@ use Cake\ORM\Entity;
  * @property string $user_id
  *
  * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\Word[] $words
+ * @property \App\Model\Entity\Weighting[] $weightings
  */
 class Book extends Entity
 {
@@ -29,6 +29,6 @@ class Book extends Entity
         'name' => true,
         'user_id' => true,
         'user' => true,
-        'words' => true
+        'weightings' => true
     ];
 }

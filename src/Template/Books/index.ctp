@@ -10,8 +10,8 @@
         <li><?= $this->Html->link(__('New Book'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Words'), ['controller' => 'Words', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Word'), ['controller' => 'Words', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Weightings'), ['controller' => 'Weightings', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Weighting'), ['controller' => 'Weightings', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="books index large-9 medium-8 columns content">
@@ -30,7 +30,7 @@
             <tr>
                 <td><?= h($book->id) ?></td>
                 <td><?= h($book->name) ?></td>
-                <td><?= $book->has('user') ? $this->Html->link($book->user->id, ['controller' => 'Users', 'action' => 'view', $book->user->id]) : '' ?></td>
+                <td><?= $book->has('user') ? $this->Html->link($book->user->username, ['controller' => 'Users', 'action' => 'view', $book->user->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $book->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $book->id]) ?>

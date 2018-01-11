@@ -25,9 +25,7 @@ class WordsTableTest extends TestCase
      */
     public $fixtures = [
         'app.words',
-        'app.books',
-        'app.users',
-        'app.books_words'
+        'app.weightings'
     ];
 
     /**

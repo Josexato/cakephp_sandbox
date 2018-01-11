@@ -18,7 +18,7 @@ class WordsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'name' => ['type' => 'string', 'length' => 200, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'name' => ['type' => 'string', 'length' => 200, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -36,7 +36,7 @@ class WordsFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => 'c1a5c459-7f8d-4d44-9494-874214911852',
+            'id' => '526293b2-74d0-4bb8-aa11-fc380a1b564e',
             'name' => 'Lorem ipsum dolor sit amet'
         ],
     ];

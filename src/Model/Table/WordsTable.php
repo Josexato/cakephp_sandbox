@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Words Model
  *
- * @property \App\Model\Table\BooksTable|\Cake\ORM\Association\BelongsToMany $Books
+ * @property \App\Model\Table\WeightingsTable|\Cake\ORM\Association\HasMany $Weightings
  *
  * @method \App\Model\Entity\Word get($primaryKey, $options = [])
  * @method \App\Model\Entity\Word newEntity($data = null, array $options = [])
@@ -36,10 +36,8 @@ class WordsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->belongsToMany('Books', [
-            'foreignKey' => 'word_id',
-            'targetForeignKey' => 'book_id',
-            'joinTable' => 'books_words'
+        $this->hasMany('Weightings', [
+            'foreignKey' => 'word_id'
         ]);
     }
 
@@ -58,7 +56,8 @@ class WordsTable extends Table
         $validator
             ->scalar('name')
             ->maxLength('name', 200)
-            ->allowEmpty('name');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         return $validator;
     }

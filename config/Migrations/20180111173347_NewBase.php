@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class Initial extends AbstractMigration
+class NewBase extends AbstractMigration
 {
     public function up()
     {
@@ -15,7 +15,7 @@ class Initial extends AbstractMigration
             ->addColumn('name', 'string', [
                 'default' => null,
                 'limit' => 1000,
-                'null' => true,
+                'null' => false,
             ])
             ->addColumn('user_id', 'uuid', [
                 'default' => null,
@@ -29,11 +29,49 @@ class Initial extends AbstractMigration
             )
             ->create();
 
-        $this->table('books_words', ['id' => false])
-            ->addColumn('values', 'string', [
+        $this->table('users', ['id' => false, 'primary_key' => ['id']])
+            ->addColumn('id', 'uuid', [
+                'default' => null,
+                'limit' => null,
+                'null' => false,
+            ])
+            ->addColumn('username', 'string', [
+                'default' => null,
+                'limit' => 45,
+                'null' => false,
+            ])
+            ->addColumn('first_name', 'string', [
                 'default' => null,
                 'limit' => 45,
                 'null' => true,
+            ])
+            ->addColumn('last_name', 'string', [
+                'default' => null,
+                'limit' => 45,
+                'null' => true,
+            ])
+            ->addColumn('password', 'string', [
+                'default' => null,
+                'limit' => 50,
+                'null' => false,
+            ])
+            ->addColumn('email', 'string', [
+                'default' => null,
+                'limit' => 200,
+                'null' => false,
+            ])
+            ->create();
+
+        $this->table('weightings', ['id' => false, 'primary_key' => ['id']])
+            ->addColumn('id', 'uuid', [
+                'default' => null,
+                'limit' => null,
+                'null' => false,
+            ])
+            ->addColumn('value', 'string', [
+                'default' => null,
+                'limit' => 45,
+                'null' => false,
             ])
             ->addColumn('word_id', 'uuid', [
                 'default' => null,
@@ -57,39 +95,16 @@ class Initial extends AbstractMigration
             )
             ->create();
 
-        $this->table('users', ['id' => false, 'primary_key' => ['id']])
-            ->addColumn('id', 'uuid', [
-                'default' => null,
-                'limit' => null,
-                'null' => false,
-            ])
-            ->addColumn('username', 'string', [
-                'default' => null,
-                'limit' => 45,
-                'null' => true,
-            ])
-            ->addColumn('email', 'string', [
-                'default' => null,
-                'limit' => 45,
-                'null' => true,
-            ])
-            ->addColumn('password', 'string', [
-                'default' => null,
-                'limit' => 45,
-                'null' => true,
-            ])
-            ->create();
-
         $this->table('words', ['id' => false, 'primary_key' => ['id']])
             ->addColumn('id', 'uuid', [
                 'default' => null,
                 'limit' => null,
                 'null' => false,
             ])
-            ->addColumn('word', 'string', [
+            ->addColumn('name', 'string', [
                 'default' => null,
                 'limit' => 200,
-                'null' => true,
+                'null' => false,
             ])
             ->create();
 
@@ -105,7 +120,7 @@ class Initial extends AbstractMigration
             )
             ->update();
 
-        $this->table('books_words')
+        $this->table('weightings')
             ->addForeignKey(
                 'book_id',
                 'books',
@@ -134,7 +149,7 @@ class Initial extends AbstractMigration
                 'user_id'
             );
 
-        $this->table('books_words')
+        $this->table('weightings')
             ->dropForeignKey(
                 'book_id'
             )
@@ -143,8 +158,8 @@ class Initial extends AbstractMigration
             );
 
         $this->dropTable('books');
-        $this->dropTable('books_words');
         $this->dropTable('users');
+        $this->dropTable('weightings');
         $this->dropTable('words');
     }
 }

@@ -14,8 +14,8 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Words'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Books'), ['controller' => 'Books', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Book'), ['controller' => 'Books', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Weightings'), ['controller' => 'Weightings', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Weighting'), ['controller' => 'Weightings', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="words form large-9 medium-8 columns content">
@@ -24,7 +24,6 @@
         <legend><?= __('Edit Word') ?></legend>
         <?php
             echo $this->Form->control('name');
-            echo $this->Form->control('books._ids', ['options' => $books]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

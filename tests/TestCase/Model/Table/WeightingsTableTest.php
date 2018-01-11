@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\BooksWordsTable;
+use App\Model\Table\WeightingsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\BooksWordsTable Test Case
+ * App\Model\Table\WeightingsTable Test Case
  */
-class BooksWordsTableTest extends TestCase
+class WeightingsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\BooksWordsTable
+     * @var \App\Model\Table\WeightingsTable
      */
-    public $BooksWords;
+    public $Weightings;
 
     /**
      * Fixtures
@@ -24,7 +24,7 @@ class BooksWordsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.books_words',
+        'app.weightings',
         'app.words',
         'app.books',
         'app.users'
@@ -38,8 +38,8 @@ class BooksWordsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('BooksWords') ? [] : ['className' => BooksWordsTable::class];
-        $this->BooksWords = TableRegistry::get('BooksWords', $config);
+        $config = TableRegistry::exists('Weightings') ? [] : ['className' => WeightingsTable::class];
+        $this->Weightings = TableRegistry::get('Weightings', $config);
     }
 
     /**
@@ -49,7 +49,7 @@ class BooksWordsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->BooksWords);
+        unset($this->Weightings);
 
         parent::tearDown();
     }

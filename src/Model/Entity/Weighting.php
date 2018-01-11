@@ -4,8 +4,9 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * BooksWord Entity
+ * Weighting Entity
  *
+ * @property string $id
  * @property string $value
  * @property string $word_id
  * @property string $book_id
@@ -13,7 +14,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Word $word
  * @property \App\Model\Entity\Book $book
  */
-class BooksWord extends Entity
+class Weighting extends Entity
 {
 
     /**

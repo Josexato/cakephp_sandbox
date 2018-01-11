@@ -7,20 +7,20 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * BooksWords Model
+ * Weightings Model
  *
  * @property \App\Model\Table\WordsTable|\Cake\ORM\Association\BelongsTo $Words
  * @property \App\Model\Table\BooksTable|\Cake\ORM\Association\BelongsTo $Books
  *
- * @method \App\Model\Entity\BooksWord get($primaryKey, $options = [])
- * @method \App\Model\Entity\BooksWord newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\BooksWord[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\BooksWord|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\BooksWord patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\BooksWord[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\BooksWord findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Weighting get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Weighting newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Weighting[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Weighting|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Weighting patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Weighting[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Weighting findOrCreate($search, callable $callback = null, $options = [])
  */
-class BooksWordsTable extends Table
+class WeightingsTable extends Table
 {
 
     /**
@@ -33,7 +33,9 @@ class BooksWordsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('books_words');
+        $this->setTable('weightings');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
 
         $this->belongsTo('Words', [
             'foreignKey' => 'word_id',
@@ -54,9 +56,14 @@ class BooksWordsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
+            ->uuid('id')
+            ->allowEmpty('id', 'create');
+
+        $validator
             ->scalar('value')
             ->maxLength('value', 45)
-            ->allowEmpty('value');
+            ->requirePresence('value', 'create')
+            ->notEmpty('value');
 
         return $validator;
     }
