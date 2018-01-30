@@ -52,7 +52,7 @@ class NewBase extends AbstractMigration
             ])
             ->addColumn('password', 'string', [
                 'default' => null,
-                'limit' => 50,
+                'limit' => 60,
                 'null' => false,
             ])
             ->addColumn('email', 'string', [
