@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Entity\Book;
+use App\Model\Entity\User;
 
 /**
  * Books Controller
@@ -108,5 +110,30 @@ class BooksController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    /**
+     * IsAuthorized method
+     *
+     * @param User $user user.
+     * @return Book|bool.
+     */
+    public function isAuthorized($user)
+    {
+        $action = $this->request->getParam('action');
+        // The add and tags actions are always allowed to logged in users.
+        if (in_array($action, ['add'])) {
+            return true;
+        }
+
+        // All other actions require a slug.
+        $id = $this->request->getParam('pass.0');
+        $params = $this->request->params;
+        if (!$id) {
+            return false;
+        }
+        // Check that the article belongs to the current user.
+        $book = $this->Books->findById($id)->first();
+
+        return $book->user_id === $user['id'];
     }
 }
